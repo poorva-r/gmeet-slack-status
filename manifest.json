@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Meet to Slack Status",
+  "version": "1.0",
+  "description": "Sets Slack status automatically on joining/leaving a Google Meet call.",
+  "permissions": ["tabs"],
+  "host_permissions": ["https://meet.google.com/*", "https://*.slack.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content-meet.js"]
+    },
+    {
+      "matches": ["https://*.slack.com/*"],
+      "js": ["content-slack.js"]
+    }
+  ]
+}
